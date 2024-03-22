@@ -15,3 +15,5 @@ dependencies:
   - r-ggextra=0.10.0
   - r-ggrepel=0.9.5
   - ncbi-datasets-cli=16.9.0 
+  - seqkit=2.8.0
+  - blast=2.15.0
