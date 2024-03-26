@@ -1,7 +1,6 @@
 # TODO: Replace with the name of the repo
 
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/projects/miniconda/en/latest/)
-[![Snakemake](https://img.shields.io/badge/snakemake--green)](https://snakemake.readthedocs.io/en/stable/)
 
 ## Purpose
 
@@ -12,17 +11,8 @@ TODO: Briefly describe the use cases for the pipeline.
 This repository uses Snakemake to run the pipeline and conda to manage software environments and installations. You can find operating system-specific instructions for installing miniconda [here](https://docs.conda.io/projects/miniconda/en/latest/). After installing conda and [mamba](https://mamba.readthedocs.io/en/latest/), run the following command to create the pipeline run environment.
 
 ```{bash}
-TODO: Replace <NAME> with the name of your environment
-mamba env create -n <NAME> --file envs/dev.yml
-conda activate <NAME>
-```
-
-Snakemake manages rule-specific environments via the `conda` directive and using environment files in the [envs/](./envs/) directory. Snakemake itself is installed in the main development conda environment as specified in the [dev.yml](./envs/dev.yml) file.
-
-To start the pipeline, run:
-
-```{bash}
-snakemake --software-deployment-method conda -j 8
+mamba env create -n pepeval --file envs/dev.yml
+conda activate pepeval
 ```
 
 **Tips for Developers**
