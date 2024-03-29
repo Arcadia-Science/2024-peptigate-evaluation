@@ -17,3 +17,5 @@ dependencies:
   - ncbi-datasets-cli=16.9.0 
   - seqkit=2.8.0
   - blast=2.15.0
+  - seqtk=1.4
+  - xlsx2csv=0.8.1
