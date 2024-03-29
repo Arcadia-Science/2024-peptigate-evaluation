@@ -12,6 +12,7 @@ The notebook [20240320-peptigate-against-peptidomics.ipynb](./20240320-peptigate
 
 The study accession SRP074404 houses the spider mite RNA-seq data.
 We use a combination of `pysradb` and `nf-core/fetchngs` to retrieve metadata about these samples in a format for the transcriptome assembly pipeline reads2transcriptome.
+We ran this locally (MacBook Pro).
 
 ```
 pysradb metadata --saveto SRP074404-metadata.tsv --detailed SRP074404
@@ -51,6 +52,7 @@ cat PRJNA320686*fa.gz > SRP074404_short_contigs.fa.gz
 ```
 
 Upon inspection of this file, there were no short contigs from this reads2transcriptome run.
+(Note -- short contigs are the very short contigs [<75bp] that are filtered out by r2t but written to a file in case a user wants to see these very short things. There were none of these super short contigs. There _were_ some normal contigs in the default assembly output, which is what we ran peptigate on.)
 
 These files were supplied to peptigate.
 
