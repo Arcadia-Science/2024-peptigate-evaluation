@@ -1,4 +1,4 @@
-# TODO: Replace with the name of the repo
+# 2024-peptigate-evaluation
 
 [![run with conda](http://img.shields.io/badge/run%20with-conda-3EB049?labelColor=000000&logo=anaconda)](https://docs.conda.io/projects/miniconda/en/latest/)
 
@@ -8,7 +8,7 @@ This repository assesses the accuracy of the peptigate pipeline by comparing pep
 
 ## Installation and Setup
 
-This repository uses Snakemake to run the pipeline and conda to manage software environments and installations. You can find operating system-specific instructions for installing miniconda [here](https://docs.conda.io/projects/miniconda/en/latest/). After installing conda and [mamba](https://mamba.readthedocs.io/en/latest/), run the following command to create the pipeline run environment.
+This repository uses conda to manage software environments and installations. You can find operating system-specific instructions for installing miniconda [here](https://docs.conda.io/projects/miniconda/en/latest/). After installing conda and [mamba](https://mamba.readthedocs.io/en/latest/), run the following command to create the pipeline run environment.
 
 ```{bash}
 mamba env create -n pepeval --file envs/dev.yml
