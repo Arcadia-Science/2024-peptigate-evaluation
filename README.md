@@ -28,9 +28,9 @@ We provide a summary of the results in this main README, but the code, analysis,
 * [README.md](./README.md): describes the contents of this repo and how to interact with it.
 * [SRP074404](./SRP074404): contains code and results for the peptigate run on the spider mite transcriptome and comparison against a mass spec peptidomics run.
 * [envs](./envs): documents conda software environments used for analyses in this repo.
-* human: contains code and results for the peptigate run on the human RefSeq transcriptome and comparison against peptides in the database the Human Peptide Atlas.
+* [human](./human): contains code and results for the peptigate run on the human RefSeq transcriptome and comparison against peptides in the database the Human Peptide Atlas.
 * [riborf](./riborf): contains code and results for the peptigate run on the human RefSeq transcriptome and comparison against peptides predicted from a compendium of ribosomal profiling data.
-* .github, .vscode, Makefile, pyproject.toml: Control the developer behavior of the repository. 
+* [.github](./.github), [.vscode](./.vscode), [Makefile](./Makefile), [pyproject.toml](./pyproject.toml): Control the developer behavior of the repository. 
 
 ### Data
 
