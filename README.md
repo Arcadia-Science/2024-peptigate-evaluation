@@ -4,7 +4,7 @@
 
 ## Purpose
 
-This repository assesses the accuracy of the peptigate pipeline by comparing peptide predictions from transcriptomes against orthogonal data sets (ribosome profiling, peptide databases, and peptidomics mass spectrometry).
+This repository assesses the accuracy of the [peptigate pipeline](https://github.com/Arcadia-Science/peptigate) by comparing peptide predictions from transcriptomes against orthogonal data sets (ribosome profiling, peptide databases, and peptidomics mass spectrometry).
 
 ## Installation and Setup
 
@@ -17,7 +17,10 @@ conda activate pepeval
 
 ## Overview
 
-
+This reposity assess whether the [peptigate pipeline](https://github.com/Arcadia-Science/peptigate) predicts real peptides from transcriptome assemblies.
+It does this by comparing the peptigate peptide predictions against three orthogonal data sources: ribosome profiling, peptide databases, and peptidomics mass spectrometry.
+As described below in the description of the folder structure, this evaluation takes places in three separate folders, one per orthogonal data set type.
+We provide a summary of the results in this main README, but the code, analysis, and details about the results are located in the README and notebooks of each sub-folder.
 
 ### Description of the folder structure
 
