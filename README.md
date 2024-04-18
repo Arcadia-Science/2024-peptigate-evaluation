@@ -15,15 +15,28 @@ mamba env create -n pepeval --file envs/dev.yml
 conda activate pepeval
 ```
 
-## Data
-
 ## Overview
 
+
+
 ### Description of the folder structure
+
+* [LICENSE](./LICENSE): specifies terms for re-use of the code in this repo.
+* [README.md](./README.md): describes the contents of this repo and how to interact with it.
+* [SRP074404](./SRP074404): contains code and results for the peptigate run on the spider mite transcriptome and comparison against a mass spec peptidomics run.
+* [envs](./envs): documents conda software environments used for analyses in this repo.
+* human: contains code and results for the peptigate run on the human RefSeq transcriptome and comparison against peptides in the database the Human Peptide Atlas.
+* [riborf](./riborf): contains code and results for the peptigate run on the human RefSeq transcriptome and comparison against peptides predicted from a compendium of ribosomal profiling data.
+* .github, .vscode, Makefile, pyproject.toml: Control the developer behavior of the repository. 
+
+### Data
+
+See the README in each analysis folder for a description of the data and URLs for download. 
 
 ### Description of results
 
 To understand how well peptigate predicts peptides, we performed three tests.
+See the README and notebooks in each analysis folder for more details.
 In each table, "Evidence peptide is real" means the peptide was either in the peptidomics data set (spider mite), the ribosome profiling data set (human riborf), or in the peptipedia peptide database (all three).
 
 1. Run peptigate on the human transcriptome and compare against databases of peptides that contain human peptide predictions.
