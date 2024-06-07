@@ -23,20 +23,19 @@ Make a peptigate config file:
 input_dir: "inputs/"
 output_dir: "outputs/human/"
 
+contigs: "human/GCF_000001405.40_rna.fna"
 orfs_amino_acids: "human/GCF_000001405.40_protein.faa"
 orfs_nucleotides: "human/GCF_000001405.40_cds_from_genomic.fna"
-contigs_shorter_than_r2t_minimum_length: "human/GCF_000001405.40_empty.fna"
-contigs_longer_than_r2t_minimum_length: "human/GCF_000001405.40_rna.fna"
 plmutils_model_dir: "inputs/models/plmutils/"
 ```
 
-Run peptigate (from commit [`10efe0d`](https://github.com/Arcadia-Science/peptigate/pull/26/commits/10efe0d778fb47631aa7a6ce7cc286e8799c761a)).
+Run peptigate (from commit hash [37dacf](https://github.com/Arcadia-Science/peptigate/commit/37dacf77833e1188b831025416d3bde00edfdcc4)).
 We ran peptigate in the environment specified in the peptigate pipeline (`envs/dev.yml`).
 ```
 snakemake --software-deployment-method conda -j 1 -k --configfile human_peptigate_config.yml
 ```
 
-Peptigate results are in the `peptigate_results`.
+Peptigate results are in the [`../results/human`](../results/human/) directory.
 We gzip compressed the files before adding them to this repository.
 
 ## Examining the outputs
