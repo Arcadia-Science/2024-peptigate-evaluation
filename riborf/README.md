@@ -54,7 +54,7 @@ gtfToGenePred gencode.v39.annotation.gtf gencode.v39.annotation.genePred.txt
 conda deactivate
 ```
 
-Download the RibORF ORF annotate script/
+Download the RibORF ORF annotation script.
 
 ```bash
 curl -JLO https://raw.githubusercontent.com/zhejilab/RibORF/master/RibORF.2.0/ORFannotate.pl
@@ -81,8 +81,8 @@ seqkit translate --trim -o riborf_human_sequences.faa riborf_human_sequences.fas
 ## Compare the RibORF peptide predictions against the peptigate peptide sequences.
 
 We compared the peptigate peptide predictions against the RibORF predictions by BLASTp-ing the peptigate predictions against the RibORF predictions.
-For this test, peptigate was run from commit fda020929bbe53b30be3fbe27722b9356ea12635.
-The results are located in the [`peptigate_results`](./peptigate_results) folder.
+For this test, peptigate was run from commit hash [37dacf](https://github.com/Arcadia-Science/peptigate/commit/37dacf77833e1188b831025416d3bde00edfdcc4).
+The results are located in the [`../results/human`](../results/human) folder.
 
 First, we made a blast database of the RibORF sequences.
 ```bash
@@ -91,7 +91,8 @@ makeblastdb -in riborf_human_sequences.faa  -dbtype prot -out riborf_human_seque
 
 Then, we BLAST'd the peptigate predictions against the RibORF sequences
 ```bash
-blastp -db riborf_human_sequences.faa -query peptigate_results/peptides.faa -out peptigate_sequences_vs_riborf_blastp.tsv -max_target_seqs 5 -outfmt "6 qseqid qlen qseq sseqid slen sseq pident length mismatch gapopen qstart qend qcov sstart send evalue bitscore"
+gunzip ../results/human/peptides.faa.gz
+blastp -db riborf_human_sequences.faa -query ../results/human/peptides.faa -out peptigate_sequences_vs_riborf_blastp.tsv -max_target_seqs 5 -outfmt "6 qseqid qlen qseq sseqid slen sseq pident length mismatch gapopen qstart qend sstart send qcovhsp evalue bitscore"
 ```
 
 These results are analyzed in the [notebook](./20240329-peptigate-vs-riborf-predictions.ipynb) in this directory.
