@@ -44,11 +44,13 @@ TransDecoder.LongOrfs -t SRP074404_contigs.fa --output_dir SRP074404/transdecode
 TransDecoder.Predict -t SRP074404_contigs.fa --output_dir SRP074404/transdecoder/
 ```
 
-Then, I merged the two short contigs files together from the reads2transcriptome outputs:
+Then, I merged the contigs files together from the reads2transcriptome outputs:
 ```
 aws s3 cp s3://arcadia-reads2transcriptome/peptigate-evaluation-gilad3/SRP074404/results/merge_transcriptomes/preprocess/split_trinity/PRJNA320686_trinity.short.fa.gz .
 aws s3 cp s3://arcadia-reads2transcriptome/peptigate-evaluation-gilad3/SRP074404/results/merge_transcriptomes/preprocess/split_rnaspades/PRJNA320686_rnaspades.short.fa.gz .
 cat PRJNA320686*fa.gz > SRP074404_short_contigs.fa.gz
+gunzip SRP074404_short_contigs.fa.gz
+cat  SRP074404_r2t/SRP074404_contigs.fa > SRP074404_all_contigs.fa
 ```
 
 Upon inspection of this file, there were no short contigs from this reads2transcriptome run.
@@ -62,14 +64,13 @@ We made the following config file:
 input_dir: "inputs/"
 output_dir: "outputs/SRP074404/"
 
+contigs: "SRP074404_r2t/SRP074404_all_contigs.fa"
 orfs_amino_acids: "SRP074404_r2t/SRP074404_contigs.fa.transdecoder.pep"
 orfs_nucleotides: "SRP074404_r2t/SRP074404_contigs.fa.transdecoder.cds"
-contigs_shorter_than_r2t_minimum_length: "SRP074404_r2t/SRP074404_short_contigs.fa"
-contigs_longer_than_r2t_minimum_length: "SRP074404_r2t/SRP074404_contigs.fa"
-plmutils_model_dir: "inputs/models/plmutils/"```
+plmutils_model_dir: "inputs/models/plmutils/"
 ```
 
-And ran peptigate with the following command (from commit hash [4812d7b](https://github.com/Arcadia-Science/peptigate/commit/4812d7b624a0a329d25522906e71065c9e7143ed)):
+And ran peptigate with the following command (from commit hash [37dacf](https://github.com/Arcadia-Science/peptigate/commit/37dacf77833e1188b831025416d3bde00edfdcc4)):
 ```
 snakemake --software-deployment-method conda -j 2 -k --configfile SRP074404_peptigate_config.yml
 ```
@@ -79,7 +80,7 @@ We then gzip'd the resulting prediction and annotation TSV files:
 gzip *tsv
 ```
 
-Results are in the `peptigate_results` directory.
+Results are in the `results/SRP074404` directory.
 
 ## Comparing peptigate peptide predictions against peptidomics data
 
@@ -99,15 +100,11 @@ We made a BLAST database of the peptidomics results
 makeblastdb -in peptidomics/pep_20160811_crap_gen_simple_correct.fasta -dbtype prot -out peptidomics/pep_20160811_crap_gen_simple_correct
 ```
 
-We extracted sequences from the peptigate predictions:
-```
-gunzip -c peptigate_results/peptide_annotations.tsv.gz | tail -n +2 | seqkit tab2fx -o peptigate_results/peptigate_sequences.faa
-```
-
 And BLASTp'd the peptigate peptide predictions against the mass spec peptidomics database.
 ```
 mkdir blastp
-blastp -db peptidomics/pep_20160811_crap_gen_simple_correct -query peptigate_results/peptigate_sequences.faa -out blastp/peptigate_sequences_vs_peptidomics_blastp.tsv -max_target_seqs 5 -outfmt "6 qseqid qlen qseq sseqid slen sseq pident length mismatch gapopen qstart qend sstart send evalue bitscore"
+gunzip ../results/SRP074404/peptides.faa.gz
+blastp -db peptidomics/pep_20160811_crap_gen_simple_correct -query ../results/SRP074404/peptides.faa -out blastp/peptigate_sequences_vs_peptidomics_blastp.tsv -max_target_seqs 5 -outfmt "6 qseqid qlen qseq sseqid slen sseq pident length mismatch gapopen qstart qend sstart send evalue bitscore"
 ```
 
 We also did the opposite -- tBLASTn'd the peptidomics MS data against the transcripts in the assembled transcriptome.
@@ -120,3 +117,5 @@ makeblastdb -in SRP074404_r2t/SRP074404_contigs.fa -dbtype nucl -out SRP074404_r
 mkdir tblastn
 tblastn -db SRP074404_r2t/SRP074404_contigs -query peptidomics/pep_20160811_crap_gen_simple_correct.fasta -out tblastn/peptidomics_vs_transcriptome_tblastn.tsv -max_target_seqs 5 -outfmt "6 qseqid qlen qseq sseqid slen sseq pident length mismatch gapopen qstart qend sstart send evalue bitscore"
 ```
+
+We analyze these results in [20240320-peptigate-against-peptidomics.ipynb](./20240320-peptigate-against-peptidomics.ipynb)
