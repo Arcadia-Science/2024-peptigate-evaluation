@@ -91,8 +91,8 @@ makeblastdb -in riborf_human_sequences.faa  -dbtype prot -out riborf_human_seque
 
 Then, we BLAST'd the peptigate predictions against the RibORF sequences
 ```bash
-gunzip ../results/human/peptides.faa.gz
-blastp -db riborf_human_sequences.faa -query ../results/human/peptides.faa -out peptigate_sequences_vs_riborf_blastp.tsv -max_target_seqs 5 -outfmt "6 qseqid qlen qseq sseqid slen sseq pident length mismatch gapopen qstart qend sstart send qcovhsp evalue bitscore"
+gunzip ../../peptigate/results/predictions/peptides.faa.gz
+blastp -db riborf_human_sequences.faa -query ../../peptigate/results/predictions/peptides.faa -out peptigate_sequences_vs_riborf_blastp.tsv -max_target_seqs 5 -outfmt "6 qseqid qlen qseq sseqid slen sseq pident length mismatch gapopen qstart qend sstart send qcovhsp evalue bitscore"
 ```
 
 These results are analyzed in the [notebook](./20240329-peptigate-vs-riborf-predictions.ipynb) in this directory.
