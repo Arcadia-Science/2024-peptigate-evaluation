@@ -81,8 +81,7 @@ seqkit translate --trim -o riborf_human_sequences.faa riborf_human_sequences.fas
 ## Compare the RibORF peptide predictions against the peptigate peptide sequences.
 
 We compared the peptigate peptide predictions against the RibORF predictions by BLASTp-ing the peptigate predictions against the RibORF predictions.
-For this test, peptigate was run from commit hash [37dacf](https://github.com/Arcadia-Science/peptigate/commit/37dacf77833e1188b831025416d3bde00edfdcc4).
-The results are located in the [`../results/human`](../results/human) folder.
+The peptigate results are located in the [../../peptigate/results](../../peptigate/results) folder.
 
 First, we made a blast database of the RibORF sequences.
 ```bash
