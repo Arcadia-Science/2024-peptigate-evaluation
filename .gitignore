@@ -85,3 +85,6 @@ work/
 
 # R files
 .Rhistory
+
+# other files
+deprecated/
