@@ -101,3 +101,5 @@ evaluation/riborf/gencode*
 evaluation/riborf/outputDir/
 evaluation/riborf/peptigate_sequences_vs_riborf_blastp.tsv
 evaluation/riborf/riborf_human*
+peptigate/running_peptigate/GCF_000001405.40*
+peptigate/running_peptigate/*transdecoder*
