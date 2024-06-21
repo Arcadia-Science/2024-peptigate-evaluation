@@ -85,3 +85,21 @@ work/
 
 # R files
 .Rhistory
+
+# other files
+deprecated/
+evaluation/kozak_scores/.Renviron
+evaluation/kozak_scores/GCF_000001405.40_GRCh38.p14_rna_kozak_scores.tsv
+evaluation/kozak_scores/full_human_transcriptome_kozak_scores.tsv
+evaluation/kozak_scores/sorf_kozak_scores.tsv
+evaluation/kozak_scores/sorf_transcripts.fa
+evaluation/noncoding_rnas/sorf_transcripts.fa
+evaluation/riborf/41467_2024_46240_MOESM6_ESM.xlsx
+evaluation/riborf/GRCh38*
+evaluation/riborf/ORFannotate.pl
+evaluation/riborf/gencode*
+evaluation/riborf/outputDir/
+evaluation/riborf/peptigate_sequences_vs_riborf_blastp.tsv
+evaluation/riborf/riborf_human*
+peptigate/running_peptigate/GCF_000001405.40*
+peptigate/running_peptigate/*transdecoder*
