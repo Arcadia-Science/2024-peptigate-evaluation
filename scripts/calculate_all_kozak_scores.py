@@ -19,12 +19,16 @@ def read_fasta(filepath):
 
 def calculate_kozak_score(transcript, orf):
     """Calculates the Kozak score based on specific nucleotide preferences at key positions."""
-    start_index = transcript.find(orf[:3])  # Find the start codon index in the transcript
-    if start_index == -1 or start_index < 6 or start_index + 1 >= len(transcript):
-        return "NA"  # Not applicable or insufficient context
+    transcript = transcript.upper()
+    orf = orf.upper()
+    start_index = transcript.find(orf)
+    # If the entire Kozak sequence is not represented, assign NA
+    if start_index < 6:
+        return "NA"
     sequence = (
         transcript[start_index - 6 : start_index] + transcript[start_index + 3 : start_index + 4]
     )
+    sequence = sequence.upper()
     if len(sequence) != 7:
         return "NA"
     kozak_score = 3 * sum((sequence[0] == "G", sequence[3] in "AG", sequence[-1] == "G"))
