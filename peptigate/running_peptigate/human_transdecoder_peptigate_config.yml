@@ -1,0 +1,6 @@
+input_dir: "inputs/"
+output_dir: "outputs/human_transdecoder"
+contigs: "input_data/human_transdecoder/GCF_000001405.40_GRCh38.p14_rna.fna"
+orfs_amino_acids: "input_data/human_transdecoder/GCF_000001405.40_GRCh38.p14_rna.fna.transdecoder.pep"
+orfs_nucleotides: "input_data/human_transdecoder/GCF_000001405.40_GRCh38.p14_rna.fna.transdecoder.cds"
+plmutils_model_dir: "inputs/models/plmutils/"
