@@ -1,4 +1,8 @@
-Check whether peptigate predicted that bona fide long non-coding RNAs are coding.
+Check whether peptigate predicted peptides in *bona fide* long non-coding RNAs.
+*Bona fide* long non-coding RNAs do not contain sORFs or any coding sequence.
+Therefore, peptigate should not predict an sORF on these transcripts.
+A frequent failure mode for sORF-encoded peptide annotation is that sORFs are too short to be detected by normal gene annotation software (typically 300 nucleotides/100 amino acids) and so the transcript is marked as non coding.
+*Bona fide* long non-coding RNAs are not like these transcripts; they actually contain no coding sequence. 
 
 ```
 seqkit grep --pattern-file ../../peptigate/results/sORF/plmutils/plmutils_peptide_names.faa -o sorf_transcripts.fa ../../peptigate/running_peptigate/GCF_000001405.40_GRCh38.p14_rna.fna

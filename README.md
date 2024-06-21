@@ -17,6 +17,8 @@ mamba env create -n pepeval --file envs/dev.yml
 conda activate pepeval
 ```
 
+The notebooks can also be run using the same environment.
+
 ## Overview
 
 This reposity assess whether the [peptigate pipeline](https://github.com/Arcadia-Science/peptigate) predicts real peptides from the human transcriptome assembly.
@@ -27,14 +29,14 @@ See the README and notebook in each sub-folder for a description of the analysis
 
 * [LICENSE](./LICENSE): specifies terms for re-use of the code in this repo.
 * [README.md](./README.md): describes the contents of this repo and how to interact with it.
-* [envs](./envs): documents conda software environments used for analyses in this repo.
-* [evaluation](./evaluation): contains code, notebooks, documentation, and results for comparing the peptigate results against orthogonal data sets.
-    * [kozak_scores](./evaluation/kozak_scores): compares the strength on Kozak sequences (translation initiation sequences) in peptigate-predicted peptides against TransDecoder-predicted open reading frames in the human transcriptome.
-    * [noncoding_rnas](./evaluation/noncoding_rnas): tests whether peptigate predicted any *bona fide* long non-coding RNAs to be coding.
-    * [peptipedia](./evaluation/peptipedia): compares the peptigate peptide predictions against a metadatabase of bioactive peptide sequences. 
-    * [riborf](./evaluation/riborf): compares the sORF-encoded peptides predicted by peptigate against open reading frames in over 600 human ribosomal profiling data sets predicted by the tool ribORF. 
-* [peptigate](./peptigate): contains documentation of how we ran peptigate on the human RefSeq transcriptome as well as results files output by peptigate.
-* [.github](./.github), [.vscode](./.vscode), [.gitignore](./.gitignore), [.pre-commit-config.yml](./.pre-commit-config.yml), [Makefile](./Makefile), [pyproject.toml](./pyproject.toml): Control the developer behavior of the repository. 
+* [envs/](./envs): documents conda software environments used for analyses in this repo.
+* [evaluation/](./evaluation): contains code, notebooks, documentation, and results for comparing the peptigate results against orthogonal data sets.
+    * [kozak_scores/](./evaluation/kozak_scores): compares the strength of Kozak sequences (translation initiation sequences) in peptigate-predicted peptides against TransDecoder-predicted open reading frames in the human transcriptome.
+    * [noncoding_rnas/](./evaluation/noncoding_rnas): tests whether peptigate predicted peptides from any *bona fide* long non-coding RNAs.
+    * [peptipedia/](./evaluation/peptipedia): compares the peptigate peptide predictions against [Peptipedia](https://app.peptipedia.cl/), a large database of bioactive peptide sequences. 
+    * [riborf/](./evaluation/riborf): compares the human transcriptome sORF-encoded peptides predicted by peptigate against open reading frames predicted by the tool ribORF from over 600 human ribosomal profiling data sets. 
+* [peptigate/](./peptigate): contains documentation of how we ran peptigate on the human RefSeq transcriptome as well as results files output by peptigate.
+* [.github/](./.github), [.vscode/](./.vscode), [.gitignore](./.gitignore), [.pre-commit-config.yml](./.pre-commit-config.yml), [Makefile](./Makefile), [pyproject.toml](./pyproject.toml): Control the developer behavior of the repository. 
 
 ### Data
 
