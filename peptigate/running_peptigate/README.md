@@ -1,10 +1,9 @@
 This README documents how we ran peptigate on the human transcriptome to produce the files in the [results](../results/) folder.
-First, we prepared the human transcriptome for input into peptigate.
-We downloaded the transcriptome and then annotated it with TransDecoder.
-We recognize that this under utilizes the existing annotations for the human transcriptome.
-However, TransDecoder is the recommended way to annotate a transcriptome before predicting peptides with peptigate, so we annotated it this way.
 
-```
+First, we downloaded the human transcriptome and prepared it for input into peptigate by annotating it with TransDecoder.
+We recognize that using TransDecoder under-utilizes the existing annotations for the human transcriptome; we used it because it is the recommended way to annotate a transcriptome before predicting peptides with peptigate.
+
+```{bash}
 conda activate pepeval
 mamba install transdecoder=5.7.1
 curl -JLO https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/405/GCF_000001405.40_GRCh38.p14/GCF_000001405.40_GRCh38.p14_rna.fna.gz
@@ -13,7 +12,7 @@ TransDecoder.LongOrfs -t GCF_000001405.40_GRCh38.p14_rna.fna --output_dir transd
 TransDecoder.Predict -t GCF_000001405.40_GRCh38.p14_rna.fna_contigs --output_dir transdecoder/
 ```
 
-We then used the following config file to run peptigate:
+We then used the following [config file](./human_transdecoder_peptigate_config.yml) to run peptigate:
 ```
 input_dir: "inputs/"
 output_dir: "outputs/human_transdecoder"
@@ -23,8 +22,8 @@ orfs_nucleotides: "input_data/human_transdecoder/GCF_000001405.40_GRCh38.p14_rna
 plmutils_model_dir: "inputs/models/plmutils/"
 ```
 
-And used this command to start peptigate:
-```
+And used this command to run peptigate:
+```{bash}
 snakemake --software-deployment-method conda -j 1 --configfile human_transdecoder_peptigate_config.yml
 ```
 
