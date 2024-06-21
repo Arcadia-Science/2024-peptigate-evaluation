@@ -24,6 +24,7 @@ The notebooks can also be run using the same environment.
 This reposity assess whether the [peptigate pipeline](https://github.com/Arcadia-Science/peptigate) predicts real peptides from the human transcriptome assembly.
 It does this by comparing the peptigate peptide predictions against four orthogonal data sources: ribosome profiling, peptide databases, *bona fide* long non-coding RNAs, and strength of translation initiation sequences (Kozak sequences).
 See the README and notebook in each sub-folder for a description of the analysis and results of each comparison.
+Note that each notebook name is prepended with its creation date.
 
 ### Description of the folder structure
 
