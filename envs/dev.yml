@@ -17,6 +17,7 @@ dependencies:
   - r-ggforce=0.4.2
   - r-broom=1.0.6
   - r-janitor=2.2.0
+  - r-optparse=1.7.5
   - ncbi-datasets-cli=16.9.0 
   - seqkit=2.8.0
   - blast=2.15.0
