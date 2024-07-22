@@ -1,6 +1,6 @@
-# Determining whether predicted cleavage peptides (DeepPeptide) that don't match peptides in databases have other traits that support their veracity.
+# Determining whether predicted cleavage peptides (from DeepPeptide) that don't match peptides in databases have other traits that support their veracity.
 
-We started by predicted whether parent proteins of cleavage peptides had signal peptides.
+We started by predicting whether parent proteins of cleavage peptides had signal peptides.
 We used the DeepSig environment file defined in peptigate.
 ```
 curl -JLO https://raw.githubusercontent.com/Arcadia-Science/peptigate/main/envs/deepsig.yml
