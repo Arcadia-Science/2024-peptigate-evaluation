@@ -18,6 +18,10 @@ dependencies:
   - r-ggforce=0.4.2
   - r-broom=1.0.6
   - r-janitor=2.2.0
+  - r-remotes=2.5.0 
+  - r-rttf2pt1=1.3.12
+  - r-extrafontdb=1.0
+  - r-extrafont=0.19
   - seqkit=2.8.0
   - blast=2.15.0
   - seqtk=1.4
