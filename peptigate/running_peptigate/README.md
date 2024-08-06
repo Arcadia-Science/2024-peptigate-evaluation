@@ -5,7 +5,6 @@ We recognize that using TransDecoder under-utilizes the existing annotations for
 
 ```{bash}
 conda activate pepeval
-mamba install transdecoder=5.7.1
 curl -JLO https://ftp.ncbi.nlm.nih.gov/genomes/all/GCF/000/001/405/GCF_000001405.40_GRCh38.p14/GCF_000001405.40_GRCh38.p14_rna.fna.gz
 gunzip GCF_000001405.40_GRCh38.p14_rna.fna.gz
 TransDecoder.LongOrfs -t GCF_000001405.40_GRCh38.p14_rna.fna --output_dir transdecoder/
@@ -22,7 +21,7 @@ orfs_nucleotides: "input_data/human_transdecoder/GCF_000001405.40_GRCh38.p14_rna
 plmutils_model_dir: "inputs/models/plmutils/"
 ```
 
-And used this command to run peptigate:
+And used this command to run peptigate (note that you will need to install peptigate first. See installation/run instructions [here](https://github.com/Arcadia-Science/peptigate?tab=readme-ov-file#installation-and-usage)).
 ```{bash}
 snakemake --software-deployment-method conda -j 1 --configfile human_transdecoder_peptigate_config.yml
 ```

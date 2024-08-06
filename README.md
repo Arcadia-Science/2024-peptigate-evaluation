@@ -17,6 +17,12 @@ mamba env create -n pepeval --file envs/dev.yml
 conda activate pepeval
 ```
 
+The arcadiathemeR R package isn't available to install via conda.
+After activating the conda environment, use the following Rscript to install it.
+```
+Rscript scripts/install_arcadiathemer.R
+```
+
 The notebooks can also be run using the same environment.
 
 ## Overview
